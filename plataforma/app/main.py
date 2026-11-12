@@ -92,6 +92,11 @@ class FirmaRequest(BaseModel):
     juez_id: str
 
 
+class LoginRequest(BaseModel):
+    usuario: str = ""
+    password: str = ""
+
+
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse(
@@ -126,8 +131,37 @@ async def api_dashboard():
         "ordenes": ordenes,
         "reclamos": reclamos,
         "auditoria": auditoria,
+        "proveedores": gestor_isp.proveedores,
+        "jueces": list(JUECES_MAP.values()),
         "integridad": verificar_integridad_auditoria(),
     }
+
+
+@app.get("/api/status")
+async def api_status_compat():
+    return await api_dashboard()
+
+
+@app.post("/api/login")
+async def api_login_compat(body: LoginRequest):
+    if body.usuario not in JUECES_MAP:
+        raise HTTPException(status_code=403, detail="Juez no registrado")
+    return {"ok": True, "juez_id": body.usuario}
+
+
+@app.post("/api/logout")
+async def api_logout_compat():
+    return {"ok": True}
+
+
+@app.get("/api/verificar")
+async def api_verificar_compat():
+    return verificar_integridad_auditoria()
+
+
+@app.post("/api/exportar")
+async def api_exportar_compat():
+    return await api_exportar_entrega()
 
 
 @app.post("/api/expedientes/{exp_id}/aprobar")
