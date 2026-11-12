@@ -1,0 +1,179 @@
+{
+  "escenario_id": "practica-01",
+  "fin_min": 105,
+  "gracia_min": 5,
+  "dominios_piratas": [
+    "s1.pelotaya.test",
+    "s1-respaldo.pelotaya.test",
+    "s2.pelotaya.test",
+    "s3.pelotaya.test",
+    "espejo.pelotaya.test",
+    "live.golazo-libre.test",
+    "tv.verpartido-hd.test",
+    "verpartido-hd.test",
+    "x9.tribuna-pirata.test",
+    "x10.tribuna-pirata.test"
+  ],
+  "streams": [
+    {
+      "id": "pelotaya",
+      "clase": "pirata",
+      "fases": [
+        {
+          "host": "s1.pelotaya.test",
+          "ip": "203.0.113.10",
+          "desde_min": 2.0,
+          "hasta_min": 36.0,
+          "bloqueo_recomendado": "ip",
+          "detecciones": [
+            "D-0001",
+            "D-0005",
+            "D-0009",
+            "D-0012"
+          ]
+        },
+        {
+          "host": "s2.pelotaya.test",
+          "ip": "203.0.113.11",
+          "desde_min": 37.5,
+          "hasta_min": 70.0,
+          "bloqueo_recomendado": "ip",
+          "detecciones": [
+            "D-0014",
+            "D-0018",
+            "D-0023",
+            "D-0027"
+          ]
+        },
+        {
+          "host": "s3.pelotaya.test",
+          "ip": "198.51.100.77",
+          "desde_min": 71.0,
+          "hasta_min": 105.0,
+          "bloqueo_recomendado": "ip",
+          "detecciones": [
+            "D-0029",
+            "D-0033",
+            "D-0038",
+            "D-0042"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golazo-cdn",
+      "clase": "pirata",
+      "fases": [
+        {
+          "host": "live.golazo-libre.test",
+          "ip": "198.51.100.20",
+          "desde_min": 6.0,
+          "hasta_min": 105.0,
+          "bloqueo_recomendado": "dominio",
+          "detecciones": [
+            "D-0003",
+            "D-0006",
+            "D-0010",
+            "D-0013",
+            "D-0017",
+            "D-0022",
+            "D-0026",
+            "D-0031",
+            "D-0036",
+            "D-0040"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verpartido",
+      "clase": "pirata",
+      "fases": [
+        {
+          "host": "tv.verpartido-hd.test",
+          "ip": "192.0.2.50",
+          "desde_min": 9.0,
+          "hasta_min": 105.0,
+          "bloqueo_recomendado": "dominio",
+          "detecciones": [
+            "D-0004",
+            "D-0007",
+            "D-0011",
+            "D-0015",
+            "D-0019",
+            "D-0024",
+            "D-0028",
+            "D-0032",
+            "D-0037",
+            "D-0041"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tribuna",
+      "clase": "pirata",
+      "fases": [
+        {
+          "host": "x9.tribuna-pirata.test",
+          "ip": "203.0.113.40",
+          "desde_min": 55.0,
+          "hasta_min": 81.0,
+          "bloqueo_recomendado": "ip",
+          "detecciones": [
+            "D-0021",
+            "D-0025",
+            "D-0030"
+          ]
+        },
+        {
+          "host": "x10.tribuna-pirata.test",
+          "ip": "203.0.113.41",
+          "desde_min": 82.0,
+          "hasta_min": 105.0,
+          "bloqueo_recomendado": "ip",
+          "detecciones": [
+            "D-0034",
+            "D-0039",
+            "D-0043"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resumenes",
+      "clase": "falso_positivo",
+      "fases": [
+        {
+          "host": "vod.resumenes-deportivos.test",
+          "ip": "198.51.100.90",
+          "desde_min": 20.0,
+          "hasta_min": 60.0,
+          "bloqueo_recomendado": null,
+          "detecciones": [
+            "D-0008",
+            "D-0020"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canal-norte",
+      "clase": "licenciatario",
+      "fases": [
+        {
+          "host": "envivo.canalnorte.test",
+          "ip": "192.0.2.10",
+          "desde_min": 4.0,
+          "hasta_min": 105.0,
+          "bloqueo_recomendado": null,
+          "detecciones": [
+            "D-0002",
+            "D-0016",
+            "D-0035"
+          ]
+        }
+      ]
+    }
+  ]
+}

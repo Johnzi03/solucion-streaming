@@ -1,0 +1,25 @@
+{
+  "aviso": "Juzgados, jueces y claves ficticios para el hackathon. Las claves sirven solo para firmar órdenes en el simulador.",
+  "juzgados": [
+    {
+      "id": "jg-centro-3",
+      "nombre": "Juzgado de Garantías N.º 3 (ficticio) — Distrito Judicial Centro",
+      "jurisdiccion": "Provincia Ficticia del Norte",
+      "jueces": [
+        {"id": "jueza-laura-ficticia", "nombre": "Dra. Laura Ficticia", "clave_firma_demo": "demo-clave-laura-0b7e"}
+      ]
+    },
+    {
+      "id": "jg-norte-1",
+      "nombre": "Juzgado de Garantías N.º 1 (ficticio) — Distrito Judicial Norte",
+      "jurisdiccion": "Provincia Ficticia del Norte",
+      "jueces": [
+        {"id": "juez-martin-ejemplo", "nombre": "Dr. Martín Ejemplo", "clave_firma_demo": "demo-clave-martin-4c21"}
+      ]
+    }
+  ],
+  "turnos": [
+    {"juez_id": "jueza-laura-ficticia", "desde_min": -60, "hasta_min": 50},
+    {"juez_id": "juez-martin-ejemplo", "desde_min": 50, "hasta_min": 240}
+  ]
+}

@@ -1,0 +1,1196 @@
+{
+  "id": "practica-01",
+  "aviso": "Escenario ficticio. Dominios .test/.example, IPs de documentación (RFC 5737), ASN privados.",
+  "partido": {
+    "nombre": "Partido de práctica — Club Ficticio del Norte vs. Deportivo Ejemplo",
+    "titular_derechos": "Liga Profesional Ficticia",
+    "inicio_iso": "2026-11-11T18:00:00-03:00",
+    "fin_min": 105,
+    "marcas_de_agua_validas": [
+      {
+        "prefijo": "LP26-PRA-OFI",
+        "origen": "Señal oficial del titular (plataforma propia)"
+      },
+      {
+        "prefijo": "LP26-PRA-LIC-NORTE",
+        "origen": "Licenciatario autorizado: Canal Norte TV (ficticio)"
+      }
+    ],
+    "licenciatarios": [
+      {
+        "nombre": "Canal Norte TV (ficticio)",
+        "prefijo_marca": "LP26-PRA-LIC-NORTE",
+        "dominios_autorizados": [
+          "canalnorte.test",
+          "envivo.canalnorte.test"
+        ]
+      }
+    ],
+    "id": "practica-01"
+  },
+  "asn": {
+    "64600": "Bruma Hosting Dedicado (ficticio)",
+    "64610": "NubeRápida CDN (ficticia)",
+    "64620": "Pampa Web Hosting Compartido (ficticio)",
+    "64630": "Servidores Litoral (ficticio)",
+    "64640": "Canal Norte TV (ficticio)"
+  },
+  "ip_asn": {
+    "203.0.113.10": 64600,
+    "203.0.113.11": 64600,
+    "198.51.100.77": 64630,
+    "198.51.100.20": 64610,
+    "192.0.2.50": 64620,
+    "203.0.113.40": 64600,
+    "203.0.113.41": 64600,
+    "198.51.100.90": 64630,
+    "192.0.2.10": 64640
+  },
+  "dns_pasivo": {
+    "203.0.113.10": [
+      "s1.pelotaya.test",
+      "s1-respaldo.pelotaya.test"
+    ],
+    "203.0.113.11": [
+      "s2.pelotaya.test"
+    ],
+    "198.51.100.77": [
+      "s3.pelotaya.test",
+      "espejo.pelotaya.test"
+    ],
+    "198.51.100.20": [
+      "live.golazo-libre.test",
+      "tienda-mate-y-yerba.test",
+      "noticias-del-valle.test",
+      "turismo-cafayate.example",
+      "radio-comunitaria-fm.test",
+      "municipio-ejemplo.example",
+      "biblioteca-popular-norte.test",
+      "delivery-salta-ejemplo.test",
+      "clinica-veterinaria-sol.test",
+      "inmobiliaria-ejemplo.test",
+      "academia-de-ingles.test",
+      "feria-artesanal.example"
+    ],
+    "192.0.2.50": [
+      "tv.verpartido-hd.test",
+      "verpartido-hd.test",
+      "panaderia-la-espiga.test",
+      "club-atletico-barrio-norte.test",
+      "escuela-tecnica-12.test",
+      "estudio-contable-ruiz.test"
+    ],
+    "203.0.113.40": [
+      "x9.tribuna-pirata.test"
+    ],
+    "203.0.113.41": [
+      "x10.tribuna-pirata.test"
+    ],
+    "198.51.100.90": [
+      "vod.resumenes-deportivos.test",
+      "resumenes-deportivos.test"
+    ],
+    "192.0.2.10": [
+      "envivo.canalnorte.test",
+      "canalnorte.test"
+    ]
+  },
+  "reclamos_automaticos": [
+    {
+      "dominio": "panaderia-la-espiga.test",
+      "demora_min": 4,
+      "mensaje": "Panadería La Espiga: nuestros clientes no pueden entrar a la tienda online desde hace unos minutos."
+    },
+    {
+      "dominio": "club-atletico-barrio-norte.test",
+      "demora_min": 6,
+      "mensaje": "Club Atlético Barrio Norte: la página de inscripciones dejó de cargar."
+    },
+    {
+      "dominio": "noticias-del-valle.test",
+      "demora_min": 3,
+      "mensaje": "Noticias del Valle: el diario no carga para lectores de varios proveedores."
+    },
+    {
+      "dominio": "municipio-ejemplo.example",
+      "demora_min": 5,
+      "mensaje": "Municipio Ejemplo: el portal de trámites está caído para parte de los vecinos."
+    },
+    {
+      "dominio": "canalnorte.test",
+      "demora_min": 2,
+      "mensaje": "Canal Norte TV: somos licenciatarios autorizados y nuestra transmisión fue bloqueada."
+    }
+  ],
+  "detecciones": [
+    {
+      "id": "D-0001",
+      "minuto": 2.0,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s1.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s1.pelotaya.test",
+      "ip_servidor": "203.0.113.10",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 2.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R78wa6jDSwxuvnrbaeujx9QA6W2SWznDA23chX6X64YQcfhYYZSMMZwcKXGjb2FxD+oQxdoJxuAnpRn0QxEQ0Q=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0002",
+      "minuto": 4.0,
+      "pagina": "https://canalnorte.test/en-vivo",
+      "stream_url": "https://envivo.canalnorte.test/hls/en-vivo/index.m3u8",
+      "host_stream": "envivo.canalnorte.test",
+      "ip_servidor": "192.0.2.10",
+      "asn": 64640,
+      "marca_de_agua_extraida": "LP26-PRA-LIC-NORTE",
+      "captura": {
+        "capturada_min": 4.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "RwvFGXmiALAdHp3xjN0y9vGFfpxhItqQdXAMrOC4NHutdfvcAGrbC76c32IMV3UyY7wV4ci5iGITVtrjBR9znQ=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/canalnortetv/status/4001",
+          "minuto": 3.0
+        }
+      ]
+    },
+    {
+      "id": "D-0003",
+      "minuto": 6.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 6.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R0VCZSIFk8ZdS4KLyWGvZyBgTRG3Q/r7zN01hN4BLIEDSu1jEEsjRysDQA8huKd7Tc/NcICJPD9uel6f0LcElw=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0004",
+      "minuto": 9.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 9.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R5ZW+FE1lPhjsVnEzdSZpMGTL1DXtIcHUPzBRZNIaZJw1k2CN88xkIJmNZS0qrErH2zcZzzs5C6gOPr/mhziJg=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0005",
+      "minuto": 12.0,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s1.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s1.pelotaya.test",
+      "ip_servidor": "203.0.113.10",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 12.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "Rwf/pBtapzoGLDhfCsJLJNwQKbhJhPkSPxkXwpXrZb1FEdQSkHd5+TsbF3PVHXkHY+WWlhu47xMWu/5cpWGlMA=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0006",
+      "minuto": 16.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 16.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R+a4lbguTMvLWNMVx1/Dsgn3HifREFaYl4rA1Fx5aWvaUx86RoM0s5Lei2Sr4qt/qKrGlSt/mHW3TwWV6nZrLg=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0007",
+      "minuto": 19.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 19.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R2rBe6HNyu0iyU2zt85gKL4aUwRnWwHqZ8G9QxiHZNGZFmTKHgGN1O966IryxqCy3quHyYKomNF3F7M4dLVa5g=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0008",
+      "minuto": 20.0,
+      "pagina": "https://resumenes-deportivos.test/fecha-3",
+      "stream_url": "https://vod.resumenes-deportivos.test/hls/en-vivo/index.m3u8",
+      "host_stream": "vod.resumenes-deportivos.test",
+      "ip_servidor": "198.51.100.90",
+      "asn": 64630,
+      "marca_de_agua_extraida": "LP25-F03-OFI-S102934",
+      "captura": {
+        "capturada_min": 20.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R8MnTT+MipzgwiD4O5mBkg2awKhfTBF1sGpV2m5+fh9Gl88fKzy8dnp+q0MNRi5OjG9DrZdCHtPdG4OLhsjJDw=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/resumenesdep/status/3310",
+          "minuto": 18.0
+        }
+      ]
+    },
+    {
+      "id": "D-0009",
+      "minuto": 22.0,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s1.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s1.pelotaya.test",
+      "ip_servidor": "203.0.113.10",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 22.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "RwKKZVlLXfW8XquUhw0JDQoon/A0/5nCMEG8TFhoaNkwUmnnIu+bmcN8nXFRvBs0VFbHAxCeTry74A4SzpIkCA=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0010",
+      "minuto": 26.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 26.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "RzX96ps9sQiyIc5ePHgQx51Fghind94JJWoBKNN3dBOw3v7km/qw+10fxqnDfDT73SaWxd7AAUo/T5w2+ics8w=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0011",
+      "minuto": 29.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 29.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R6OMQumK1kkNAE6w6ZMVnlnx/lXnkjEZ3DfaM1I8pG9LzASVarOvqndRcKYOj0MmlqnoL8lu6xd1MmTj2mqInA=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0012",
+      "minuto": 32.0,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s1.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s1.pelotaya.test",
+      "ip_servidor": "203.0.113.10",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 32.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "RzSp/AhOkE1PZ6epNnX6Oxq8DAXWTLlmOqui+MjxwLPQawnhtQdB5tpnK4pPN02SQwRrchYPtuQgHlSLFpuZgQ=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0013",
+      "minuto": 36.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 36.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R2upwTDISNiE5DV9i9sltEKk2CIdz1R0wnf4kHU2VbgkwhLxQV9jdX71M8zyetiec03Pwson95PX0GhfLcYaKw=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0014",
+      "minuto": 37.5,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s2.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s2.pelotaya.test",
+      "ip_servidor": "203.0.113.11",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 37.5,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R4G2psD29qRNcRjBXhz26p6jlFAaX2qLfoxZdjZ8aQMen/BxHhgncoUUpHaWZIEYwwKXQ4GNJpILdyml+WJSAQ=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0015",
+      "minuto": 39.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 39.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R68OvE0vGuYRco7Mk2aJ5ncA4eMch8LyHb7gz7+femvgXETO+iNdzr9RtOuy0nM0JSwQh6Wd2LVGYgik/3vtQQ=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0016",
+      "minuto": 44.0,
+      "pagina": "https://canalnorte.test/en-vivo",
+      "stream_url": "https://envivo.canalnorte.test/hls/en-vivo/index.m3u8",
+      "host_stream": "envivo.canalnorte.test",
+      "ip_servidor": "192.0.2.10",
+      "asn": 64640,
+      "marca_de_agua_extraida": "LP26-PRA-LIC-NORTE",
+      "captura": {
+        "capturada_min": 44.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R12HIxTpKTclNbsbUGhyTq0BcBYICGaisHnK+O6xpeFWsZMU0Pygse+j2KlNdA7y2wulEgrnIp04Cq66BIR0+w=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/canalnortetv/status/4001",
+          "minuto": 3.0
+        }
+      ]
+    },
+    {
+      "id": "D-0017",
+      "minuto": 46.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 46.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R9Zg4USD3lcsaelwCJyMDcrr/X2llgbMXZ0hYMF4s1HQe5T93ME1lkdYaX8MX9KjcSIimwm2hOFb5u14ncDDAg=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0018",
+      "minuto": 47.5,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s2.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s2.pelotaya.test",
+      "ip_servidor": "203.0.113.11",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 47.5,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R2BV16ooxjzmR6jWhOtYJlzHcZ/HFvbYGjoglK/uBdH+B0Q/Jtb4j/8H+UKQNUqNJ9BNIJMlC5PfAiq2BrEtkg=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0019",
+      "minuto": 49.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 49.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R/UnKBMftuIZmxQYXVQehwYLot4cLHpo9F+QhvfN0ZxOiwFzo+z2v1+/qMBbrub0IA37/8K+FnlRmrC36FrDzA=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0020",
+      "minuto": 50.0,
+      "pagina": "https://resumenes-deportivos.test/fecha-3",
+      "stream_url": "https://vod.resumenes-deportivos.test/hls/en-vivo/index.m3u8",
+      "host_stream": "vod.resumenes-deportivos.test",
+      "ip_servidor": "198.51.100.90",
+      "asn": 64630,
+      "marca_de_agua_extraida": "LP25-F03-OFI-S102934",
+      "captura": {
+        "capturada_min": 50.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "RxA2Wm/G5fWfu1tLKr4mRUbHZsp3YlAo0eOm6ABkmy/Y3Przf0UWqqK+EMXc3k7ks92gAsi452qEyIMY+U8Qrg=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/resumenesdep/status/3310",
+          "minuto": 18.0
+        }
+      ]
+    },
+    {
+      "id": "D-0021",
+      "minuto": 55.0,
+      "pagina": "https://tribuna-pirata.test/ver",
+      "stream_url": "https://x9.tribuna-pirata.test/hls/en-vivo/index.m3u8",
+      "host_stream": "x9.tribuna-pirata.test",
+      "ip_servidor": "203.0.113.40",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S063002",
+      "captura": {
+        "capturada_min": 55.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R8ZHaQHiNtvu3CX0pK1QOi6u3IqdeCtWC5KXH9fBoC+055M8+UR7TajvW7zZMYk64uMzHpA7VzpDRDqGwcP8fQ=="
+      },
+      "promocion": [
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/tribuna-vip",
+          "minuto": 53.0
+        },
+        {
+          "red": "telegram",
+          "url": "https://t.example/tribunapirata",
+          "minuto": 54.0
+        }
+      ]
+    },
+    {
+      "id": "D-0022",
+      "minuto": 56.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 56.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R8j3BQ0hhvnXtE5SR+zi2vsQ/MbGmjkcRqjcf6tJcEM41Kx0OeMdbu+y5vOZexI/FJKV+Hq+KaNIOlSKfnYnXQ=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0023",
+      "minuto": 57.5,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s2.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s2.pelotaya.test",
+      "ip_servidor": "203.0.113.11",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 57.5,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R8hQvBJasZahfNQHcOpLuqVdYZTLA+5X1QMubyc1dmn24psFPugjgbzziDSKH0JAdhIuNLDGXFddfK0heSeZRw=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0024",
+      "minuto": 59.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 59.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R+/684Wd4Cj1yZ08GffEA70VxI/95dx/iQ5mTrj9kRI7T6Mb5dm51NUbZfYb1FFQYaD1x1i1xXj+Rec46dUi6g=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0025",
+      "minuto": 65.0,
+      "pagina": "https://tribuna-pirata.test/ver",
+      "stream_url": "https://x9.tribuna-pirata.test/hls/en-vivo/index.m3u8",
+      "host_stream": "x9.tribuna-pirata.test",
+      "ip_servidor": "203.0.113.40",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S063002",
+      "captura": {
+        "capturada_min": 65.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "RxmuDTWmyttfBg4wUU8GnqwvQXDijJKsoQeLQJmVK//v+d2MMTneMdI/eS15i68vZJtLMdLZHT40ox2Cg2wfPw=="
+      },
+      "promocion": [
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/tribuna-vip",
+          "minuto": 53.0
+        },
+        {
+          "red": "telegram",
+          "url": "https://t.example/tribunapirata",
+          "minuto": 54.0
+        }
+      ]
+    },
+    {
+      "id": "D-0026",
+      "minuto": 66.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 66.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R3RN342iqKK4DBDFeKe0f54uQ8HgFSyNyEdvPqbP0qhOh91ydVWMrH8MCVbge/KvBAOswQ/KvJF3iky4HB2XjA=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0027",
+      "minuto": 67.5,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s2.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s2.pelotaya.test",
+      "ip_servidor": "203.0.113.11",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 67.5,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R3KPPie57RcCrLDAQQqytMHTshvAYqqHPBro29/kXNMOg9CUvUHs50TVMGoA4AhxBG2qNMRrLvR0yipZYqKjmA=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0028",
+      "minuto": 69.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 69.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R++pIgORFr4ULovC1X2kWNFjWxJPFvSVasuL5YZjSbTJoXFCoh0fA4zHY1HPM46zPQt49qkIBOh8EYMVfqs2nw=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0029",
+      "minuto": 71.0,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s3.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s3.pelotaya.test",
+      "ip_servidor": "198.51.100.77",
+      "asn": 64630,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 71.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R55ddbmFCeuipPhv1IBxdOKuwe1R/bCqco/NkhitMfiiiSOmxMTTiGF+2fUOmeGSapQ2czxJdpglKu6qr0YHOw=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0030",
+      "minuto": 75.0,
+      "pagina": "https://tribuna-pirata.test/ver",
+      "stream_url": "https://x9.tribuna-pirata.test/hls/en-vivo/index.m3u8",
+      "host_stream": "x9.tribuna-pirata.test",
+      "ip_servidor": "203.0.113.40",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S063002",
+      "captura": {
+        "capturada_min": 75.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R0SJJin/7V63mKmbQIU4Pov5H8pwDq7nuJIQRJZJLl0ueG/cK/tNYd6yhXqyKuM+E3rfpfILl7zLLnXRMJEV1g=="
+      },
+      "promocion": [
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/tribuna-vip",
+          "minuto": 53.0
+        },
+        {
+          "red": "telegram",
+          "url": "https://t.example/tribunapirata",
+          "minuto": 54.0
+        }
+      ]
+    },
+    {
+      "id": "D-0031",
+      "minuto": 76.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 76.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "RxL/ahq5TkDpI4hnMhA4rjMK8pHDlA5L8LLf4917mDW4erUqDyew6TAuagxu4jViJE+v+e6hD0f66Cqvh/Q4qA=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0032",
+      "minuto": 79.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 79.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R6djxePl8a5qGXavLA8bdbLXchzfATooamhS3T81twjq8okYq7Tja9Q9vG46TAaMvxqWswaFS7aE+9Tk8GoLXA=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0033",
+      "minuto": 81.0,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s3.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s3.pelotaya.test",
+      "ip_servidor": "198.51.100.77",
+      "asn": 64630,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 81.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R0qO0RWgi5mSzBtsk8k/y2RridSrYp18qe1A7DWGRR6IU14ubt+6VTk9vT1vdZSI1E3LIRsj+wKzSY4cP+s0ow=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0034",
+      "minuto": 82.0,
+      "pagina": "https://tribuna-pirata.test/ver",
+      "stream_url": "https://x10.tribuna-pirata.test/hls/en-vivo/index.m3u8",
+      "host_stream": "x10.tribuna-pirata.test",
+      "ip_servidor": "203.0.113.41",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S063002",
+      "captura": {
+        "capturada_min": 82.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R6VWz/XEpDLRE3L0IVUXZgJLzsy2JgoVxDZb+CmnTa5fue8v5LlzyuzYyUon2CnqfjvSZHfvIE4Qv1a41foqCw=="
+      },
+      "promocion": [
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/tribuna-vip",
+          "minuto": 53.0
+        },
+        {
+          "red": "telegram",
+          "url": "https://t.example/tribunapirata",
+          "minuto": 54.0
+        }
+      ]
+    },
+    {
+      "id": "D-0035",
+      "minuto": 84.0,
+      "pagina": "https://canalnorte.test/en-vivo",
+      "stream_url": "https://envivo.canalnorte.test/hls/en-vivo/index.m3u8",
+      "host_stream": "envivo.canalnorte.test",
+      "ip_servidor": "192.0.2.10",
+      "asn": 64640,
+      "marca_de_agua_extraida": "LP26-PRA-LIC-NORTE",
+      "captura": {
+        "capturada_min": 84.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R9RdJ79VnbdlMBpZ4mEqBsUuG2R8KjWRjaIsj1o0NFABcjk4hecn8BUd98yS8hzuwvOPkNqcLFyXHGr8tIQVXw=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/canalnortetv/status/4001",
+          "minuto": 3.0
+        }
+      ]
+    },
+    {
+      "id": "D-0036",
+      "minuto": 86.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 86.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R+XMMDKAhiuuIXruzddy4e1nVO+IPUlwuK+/II1Im5fmLUFEVOPnyHo2NF6XcAhLfJLHQfvzmjmKKgCZvOvcgw=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0037",
+      "minuto": 89.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 89.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R7z7Z7QN5LhapytJOi5JC9k4GHOlKAtS0BIA2me+863CevQBzX7KNjGdi/dEGF+5DUTDAVN58pOqDKM80jcRhQ=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0038",
+      "minuto": 91.0,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s3.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s3.pelotaya.test",
+      "ip_servidor": "198.51.100.77",
+      "asn": 64630,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 91.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "RzeKq06NCaCzmDiPvqv03flGa9s5tl9C0GvUnFl8B8buUqYHmePuV77ArqSapqjHgsqGSHEqbm8gnr770ngn4w=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0039",
+      "minuto": 92.0,
+      "pagina": "https://tribuna-pirata.test/ver",
+      "stream_url": "https://x10.tribuna-pirata.test/hls/en-vivo/index.m3u8",
+      "host_stream": "x10.tribuna-pirata.test",
+      "ip_servidor": "203.0.113.41",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S063002",
+      "captura": {
+        "capturada_min": 92.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R/RVbNx/t/7TMz25Yr1pu3FBuE2JewPxafpsjjaA3ZVS5kzRyYXJ4ftyEwotRMAMTPO7pRGC6qlGCFGhG8ijGg=="
+      },
+      "promocion": [
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/tribuna-vip",
+          "minuto": 53.0
+        },
+        {
+          "red": "telegram",
+          "url": "https://t.example/tribunapirata",
+          "minuto": 54.0
+        }
+      ]
+    },
+    {
+      "id": "D-0040",
+      "minuto": 96.0,
+      "pagina": "https://golazo-libre.test/partido",
+      "stream_url": "https://live.golazo-libre.test/hls/en-vivo/index.m3u8",
+      "host_stream": "live.golazo-libre.test",
+      "ip_servidor": "198.51.100.20",
+      "asn": 64610,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S077310",
+      "captura": {
+        "capturada_min": 96.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "RzCRJuWHMJax9R1Vo+Obt7636yFrwl0eQ/y3/qPxe/BLQr8ZZK9qKwZnqKa3zP+IIpzdpmdUQFrQ5HgMlxjF/A=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/golazolibre/status/2207",
+          "minuto": 4.0
+        },
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/golazo-hoy",
+          "minuto": 5.0
+        }
+      ]
+    },
+    {
+      "id": "D-0041",
+      "minuto": 99.0,
+      "pagina": "https://verpartido-hd.test/vivo",
+      "stream_url": "https://tv.verpartido-hd.test/hls/en-vivo/index.m3u8",
+      "host_stream": "tv.verpartido-hd.test",
+      "ip_servidor": "192.0.2.50",
+      "asn": 64620,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S010457",
+      "captura": {
+        "capturada_min": 99.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R3kuQ4pQ7MHDMDOfuRI2Sg0w9PLz36Hb2HecSLY3bttI7m4mt3nApurfua3QeqEkeu9PNFtQ+oDZKKye5Tq0+A=="
+      },
+      "promocion": [
+        {
+          "red": "telegram",
+          "url": "https://t.example/verpartidohd",
+          "minuto": 7.0
+        }
+      ]
+    },
+    {
+      "id": "D-0042",
+      "minuto": 101.0,
+      "pagina": "https://pelotaya.test/en-vivo",
+      "stream_url": "https://s3.pelotaya.test/hls/en-vivo/index.m3u8",
+      "host_stream": "s3.pelotaya.test",
+      "ip_servidor": "198.51.100.77",
+      "asn": 64630,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S048211",
+      "captura": {
+        "capturada_min": 101.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "R8XqGEYKv8sq3FlJRPS/cUmffOnbeS6fndiuY/NL33iafA/TuBg0cNMbstILmwbDr46RORgnjXD2akP5+R5zoA=="
+      },
+      "promocion": [
+        {
+          "red": "x",
+          "url": "https://x.example/futbolya_ok/status/1001",
+          "minuto": 1.0
+        }
+      ]
+    },
+    {
+      "id": "D-0043",
+      "minuto": 102.0,
+      "pagina": "https://tribuna-pirata.test/ver",
+      "stream_url": "https://x10.tribuna-pirata.test/hls/en-vivo/index.m3u8",
+      "host_stream": "x10.tribuna-pirata.test",
+      "ip_servidor": "203.0.113.41",
+      "asn": 64600,
+      "marca_de_agua_extraida": "LP26-PRA-OFI-S063002",
+      "captura": {
+        "capturada_min": 102.0,
+        "formato": "mpegts",
+        "duracion_seg": 6,
+        "contenido_b64": "Rwn+zn0jeSBa5eVMBSlEj8H36UUiiJjU83zGTID50B1GKPHeNdUHsFWfhGjUDINNnQ4gyFEYsq+Pd6Ar612SQw=="
+      },
+      "promocion": [
+        {
+          "red": "discord",
+          "url": "https://discord.example/invite/tribuna-vip",
+          "minuto": 53.0
+        },
+        {
+          "red": "telegram",
+          "url": "https://t.example/tribunapirata",
+          "minuto": 54.0
+        }
+      ]
+    }
+  ]
+}
