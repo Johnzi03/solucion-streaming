@@ -20,6 +20,6 @@
   ],
   "turnos": [
     {"juez_id": "jueza-laura-ficticia", "desde_min": -60, "hasta_min": 50},
-    {"juez_id": "juez-martin-ejemplo", "desde_min": 50, "hasta_min": 240}
+    {"juez_id": "juez-martin-ejemplo", "desde_min": 50, "hasta_min": 105}
   ]
 }
