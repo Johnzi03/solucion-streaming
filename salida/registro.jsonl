@@ -1,0 +1,3 @@
+{"min": 116.0, "evento": "simulacion_iniciada", "escenario": "practica-01", "acelerar": 1.0, "fin_min": 105.0}
+{"min": 105.0, "evento": "partido_finalizado"}
+{"min": 110.0, "evento": "ventana_cerrada", "ordenes_activas": []}

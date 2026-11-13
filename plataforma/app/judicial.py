@@ -58,6 +58,18 @@ async def validar_juez_de_turno(client: httpx.AsyncClient, juez_id: str, entidad
     resp.raise_for_status()
     estado = resp.json()
     minuto_actual = float(estado["minuto_actual"])
+    LIMITE_JUDICIAL_MIN = 115
+
+    if minuto_actual >= LIMITE_JUDICIAL_MIN:
+        raise HTTPException(
+            status_code=403,
+            detail=(
+                f"Plazo judicial finalizado en el minuto "
+                f"{LIMITE_JUDICIAL_MIN}. "
+                f"Minuto actual: {minuto_actual:.2f}. "
+                "No se permiten nuevas firmas."
+            )
+        )
     de_turno = estado.get("jueces_de_turno", [])
 
     if juez_id not in de_turno:

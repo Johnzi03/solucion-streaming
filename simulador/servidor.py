@@ -173,6 +173,10 @@ class Simulacion:
         if registro[0]["id"] != cuerpo["juzgado_id"]:
             return 403, "El juez no pertenece al juzgado indicado"
         esperada = firmar(registro[1]["clave_firma_demo"], mensaje_orden(cuerpo))
+        if ahora >= 115:
+            return 403, "Plazo judicial finalizado: minuto 115"
+        if cuerpo["juez_id"] not in self.jueces_de_turno(ahora):
+            return 403, "El juez no está de turno"
         if not hmac.compare_digest(esperada, str(cuerpo["firma"])):
             return 403, "Firma inválida"
         return None
