@@ -1,3 +1,27 @@
-{"min": 116.0, "evento": "simulacion_iniciada", "escenario": "practica-01", "acelerar": 1.0, "fin_min": 105.0}
+{"min": 0.0, "evento": "simulacion_iniciada", "escenario": "practica-01", "acelerar": 15.0, "fin_min": 105.0}
+{"min": 5.036, "evento": "orden_recibida", "proveedor": "aurora", "juez_de_turno": true, "orden_id": "EXP-D-0001-aurora-r1", "expediente_id": "EXP-D-0001", "tipo": "ip", "objetivo": "203.0.113.10", "vence_min": 105, "juzgado_id": "jg-centro-3", "juez_id": "jueza-laura-ficticia"}
+{"min": 5.036, "evento": "orden_recibida", "proveedor": "valle", "juez_de_turno": true, "orden_id": "EXP-D-0001-valle-r1", "expediente_id": "EXP-D-0001", "tipo": "dominio", "objetivo": "s1.pelotaya.test", "vence_min": 165, "juzgado_id": "jg-centro-3", "juez_id": "jueza-laura-ficticia"}
+{"min": 5.036, "evento": "orden_recibida", "proveedor": "cumbre", "juez_de_turno": true, "orden_id": "EXP-D-0001-cumbre-r1", "expediente_id": "EXP-D-0001", "tipo": "ip", "objetivo": "203.0.113.10", "vence_min": 105, "juzgado_id": "jg-centro-3", "juez_id": "jueza-laura-ficticia"}
+{"min": 5.036, "evento": "orden_recibida", "proveedor": "andina", "juez_de_turno": true, "orden_id": "EXP-D-0001-andina-r1", "expediente_id": "EXP-D-0001", "tipo": "ip", "objetivo": "203.0.113.10", "vence_min": 105, "juzgado_id": "jg-centro-3", "juez_id": "jueza-laura-ficticia"}
+{"min": 5.587, "evento": "orden_aplicada", "proveedor": "aurora", "orden_id": "EXP-D-0001-aurora-r1", "tipo": "ip", "objetivo": "203.0.113.10"}
+{"min": 6.569, "evento": "orden_aplicada", "proveedor": "andina", "orden_id": "EXP-D-0001-andina-r1", "tipo": "ip", "objetivo": "203.0.113.10"}
+{"min": 7.503, "evento": "orden_aplicada", "proveedor": "cumbre", "orden_id": "EXP-D-0001-cumbre-r1", "tipo": "ip", "objetivo": "203.0.113.10"}
+{"min": 8.144, "evento": "orden_recibida", "proveedor": "valle", "juez_de_turno": true, "orden_id": "EXP-D-0003-valle-r1", "expediente_id": "EXP-D-0003", "tipo": "dominio", "objetivo": "live.golazo-libre.test", "vence_min": 165, "juzgado_id": "jg-centro-3", "juez_id": "jueza-laura-ficticia"}
+{"min": 8.144, "evento": "orden_recibida", "proveedor": "aurora", "juez_de_turno": true, "orden_id": "EXP-D-0003-aurora-r1", "expediente_id": "EXP-D-0003", "tipo": "dominio", "objetivo": "live.golazo-libre.test", "vence_min": 165, "juzgado_id": "jg-centro-3", "juez_id": "jueza-laura-ficticia"}
+{"min": 8.145, "evento": "orden_recibida", "proveedor": "andina", "juez_de_turno": true, "orden_id": "EXP-D-0003-andina-r1", "expediente_id": "EXP-D-0003", "tipo": "dominio", "objetivo": "live.golazo-libre.test", "vence_min": 165, "juzgado_id": "jg-centro-3", "juez_id": "jueza-laura-ficticia"}
+{"min": 8.145, "evento": "orden_recibida", "proveedor": "cumbre", "juez_de_turno": true, "orden_id": "EXP-D-0003-cumbre-r1", "expediente_id": "EXP-D-0003", "tipo": "dominio", "objetivo": "live.golazo-libre.test", "vence_min": 165, "juzgado_id": "jg-centro-3", "juez_id": "jueza-laura-ficticia"}
+{"min": 8.587, "evento": "orden_aplicada", "proveedor": "aurora", "orden_id": "EXP-D-0003-aurora-r1", "tipo": "dominio", "objetivo": "live.golazo-libre.test"}
+{"min": 9.736, "evento": "orden_aplicada", "proveedor": "andina", "orden_id": "EXP-D-0003-andina-r1", "tipo": "dominio", "objetivo": "live.golazo-libre.test"}
+{"min": 10.649, "evento": "orden_aplicada", "proveedor": "cumbre", "orden_id": "EXP-D-0003-cumbre-r1", "tipo": "dominio", "objetivo": "live.golazo-libre.test"}
+{"min": 10.734, "evento": "orden_aplicada", "proveedor": "valle", "orden_id": "EXP-D-0001-valle-r1", "tipo": "dominio", "objetivo": "s1.pelotaya.test"}
+{"min": 13.449, "evento": "orden_aplicada", "proveedor": "valle", "orden_id": "EXP-D-0003-valle-r1", "tipo": "dominio", "objetivo": "live.golazo-libre.test"}
+{"min": 105.0, "evento": "orden_vencida", "proveedor": "aurora", "orden_id": "EXP-D-0001-aurora-r1"}
+{"min": 105.0, "evento": "orden_vencida", "proveedor": "andina", "orden_id": "EXP-D-0001-andina-r1"}
+{"min": 105.0, "evento": "orden_vencida", "proveedor": "cumbre", "orden_id": "EXP-D-0001-cumbre-r1"}
 {"min": 105.0, "evento": "partido_finalizado"}
-{"min": 110.0, "evento": "ventana_cerrada", "ordenes_activas": []}
+{"min": 110.0, "evento": "ventana_cerrada", "ordenes_activas": [{"proveedor": "aurora", "orden_id": "EXP-D-0003-aurora-r1", "tipo": "dominio", "objetivo": "live.golazo-libre.test"}, {"proveedor": "andina", "orden_id": "EXP-D-0003-andina-r1", "tipo": "dominio", "objetivo": "live.golazo-libre.test"}, {"proveedor": "valle", "orden_id": "EXP-D-0001-valle-r1", "tipo": "dominio", "objetivo": "s1.pelotaya.test"}, {"proveedor": "valle", "orden_id": "EXP-D-0003-valle-r1", "tipo": "dominio", "objetivo": "live.golazo-libre.test"}, {"proveedor": "cumbre", "orden_id": "EXP-D-0003-cumbre-r1", "tipo": "dominio", "objetivo": "live.golazo-libre.test"}]}
+{"min": 165.0, "evento": "orden_vencida", "proveedor": "aurora", "orden_id": "EXP-D-0003-aurora-r1"}
+{"min": 165.0, "evento": "orden_vencida", "proveedor": "andina", "orden_id": "EXP-D-0003-andina-r1"}
+{"min": 165.0, "evento": "orden_vencida", "proveedor": "valle", "orden_id": "EXP-D-0001-valle-r1"}
+{"min": 165.0, "evento": "orden_vencida", "proveedor": "valle", "orden_id": "EXP-D-0003-valle-r1"}
+{"min": 165.0, "evento": "orden_vencida", "proveedor": "cumbre", "orden_id": "EXP-D-0003-cumbre-r1"}
