@@ -70,3 +70,59 @@ CREATE TABLE IF NOT EXISTS auditoria_hash_chain (
 CREATE INDEX IF NOT EXISTS idx_expedientes_estado ON expedientes(estado);
 CREATE INDEX IF NOT EXISTS idx_ordenes_estado ON ordenes_proveedor(estado);
 CREATE INDEX IF NOT EXISTS idx_reclamos_estado ON reclamos(estado);
+
+-- 5. Actas diarias: el snapshot es la fuente inmutable del PDF generado.
+CREATE TABLE IF NOT EXISTS actas_diarias (
+    acta_id UUID PRIMARY KEY,
+    jornada_id VARCHAR(128) NOT NULL UNIQUE,
+    estado VARCHAR(24) NOT NULL DEFAULT 'BORRADOR', -- BORRADOR | CERRADA
+    creada_en TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    cerrada_en TIMESTAMPTZ,
+    zona_horaria VARCHAR(64) NOT NULL DEFAULT 'America/Argentina/Jujuy',
+    minuto_simulado NUMERIC(8, 3),
+    datos_hash_sha256 VARCHAR(64) NOT NULL,
+    ultimo_evento_auditoria_seq BIGINT,
+    ultimo_evento_auditoria_hash VARCHAR(64),
+    snapshot_json JSONB NOT NULL,
+    pdf_path TEXT NOT NULL,
+    pdf_sha256 VARCHAR(64) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS acta_firmas (
+    id BIGSERIAL PRIMARY KEY,
+    acta_id UUID NOT NULL REFERENCES actas_diarias(acta_id) ON DELETE RESTRICT,
+    rol VARCHAR(16) NOT NULL, -- JUEZ | ESCRIBANO
+    identidad VARCHAR(128) NOT NULL,
+    resultado VARCHAR(32) NOT NULL, -- DEMO_VERIFICADA | RECHAZADA
+    modo VARCHAR(16) NOT NULL DEFAULT 'DEMO',
+    certificado_valido BOOLEAN NOT NULL DEFAULT FALSE,
+    cadena_validada BOOLEAN NOT NULL DEFAULT FALSE,
+    revocacion_comprobada BOOLEAN NOT NULL DEFAULT FALSE,
+    verificado_en TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    detalle_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    UNIQUE (acta_id, rol)
+);
+
+ALTER TABLE actas_diarias ADD COLUMN IF NOT EXISTS pdf_sha256 VARCHAR(64);
+
+CREATE OR REPLACE FUNCTION impedir_mutacion_acta_cerrada() RETURNS trigger AS $$
+BEGIN
+    IF OLD.estado = 'CERRADA' THEN
+        RAISE EXCEPTION 'El acta % está cerrada y es inmutable', OLD.acta_id;
+    END IF;
+    IF NEW.snapshot_json IS DISTINCT FROM OLD.snapshot_json
+       OR NEW.datos_hash_sha256 IS DISTINCT FROM OLD.datos_hash_sha256
+       OR NEW.pdf_path IS DISTINCT FROM OLD.pdf_path
+       OR NEW.jornada_id IS DISTINCT FROM OLD.jornada_id THEN
+        RAISE EXCEPTION 'El snapshot del acta % es inmutable', OLD.acta_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trg_acta_inmutable ON actas_diarias;
+CREATE TRIGGER trg_acta_inmutable BEFORE UPDATE ON actas_diarias
+FOR EACH ROW EXECUTE FUNCTION impedir_mutacion_acta_cerrada();
+
+CREATE INDEX IF NOT EXISTS idx_actas_jornada ON actas_diarias(jornada_id);
+CREATE INDEX IF NOT EXISTS idx_acta_firmas_acta ON acta_firmas(acta_id);

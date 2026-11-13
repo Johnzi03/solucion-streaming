@@ -1,4 +1,5 @@
 import asyncio
+import hashlib
 import json
 import os
 from contextlib import asynccontextmanager
@@ -7,11 +8,12 @@ from typing import Any, Dict
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
+from app.reportes import crear_acta
 
-from app.db import get_conn, inicializar_db, registrar_auditoria, verificar_integridad_auditoria
+from app.db import get_conn, inicializar_db, registrar_auditoria, verificar_integridad_auditoria, sha256_canonico
 from app.ingesta import MotorIngesta
 from app.judicial import JUECES_MAP, aprobar_expediente_judicial, validar_juez_de_turno
 from app.proveedores import GestorProveedores
@@ -76,7 +78,7 @@ async def ciclo_orquestador() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    inicializar_db(limpiar_datos=True)
+    inicializar_db(limpiar_datos=False)
     tarea = asyncio.create_task(ciclo_orquestador())
     yield
     global ejecutando_loop
@@ -90,6 +92,15 @@ templates = Jinja2Templates(directory=str(Path(__file__).resolve().parent / "tem
 
 class FirmaRequest(BaseModel):
     juez_id: str
+
+
+class ActaRequest(BaseModel):
+    jornada_id: str
+    minuto_simulado: float | None = None
+
+
+class IntervencionRequest(BaseModel):
+    identidad: str
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -206,3 +217,98 @@ async def api_exportar_entrega():
         "archivos": ["entrega/expediente_ejemplo.json", "entrega/registro_auditoria.json"],
         "integridad": integridad,
     }
+
+
+@app.get("/api/actas")
+async def api_listar_actas():
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT acta_id,jornada_id,estado,creada_en,cerrada_en,datos_hash_sha256,pdf_sha256 FROM actas_diarias ORDER BY creada_en DESC")
+            return {"actas": cur.fetchall(), "modo_firmas": "DEMO"}
+
+
+@app.post("/api/actas/generar")
+async def api_generar_acta(body: ActaRequest):
+    try:
+        return crear_acta(body.jornada_id, body.minuto_simulado)
+    except Exception as exc:
+        raise HTTPException(status_code=409, detail=f"No se pudo generar el acta: {exc}")
+
+
+@app.post("/api/actas/{acta_id}/cerrar")
+async def api_cerrar_acta(acta_id: str):
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT estado,minuto_simulado FROM actas_diarias WHERE acta_id=%s FOR UPDATE", (acta_id,))
+            acta = cur.fetchone()
+            if not acta:
+                raise HTTPException(status_code=404, detail="Acta inexistente")
+            if acta["estado"] == "CERRADA":
+                return {"acta_id": acta_id, "estado": "CERRADA", "idempotente": True}
+            cur.execute("UPDATE actas_diarias SET estado='CERRADA',cerrada_en=NOW() WHERE acta_id=%s", (acta_id,))
+            registrar_auditoria(conn, float(acta["minuto_simulado"] or 0), "ACTA_CERRADA", acta_id, "operador", {})
+        conn.commit()
+    return {"acta_id": acta_id, "estado": "CERRADA"}
+
+
+@app.get("/api/actas/{acta_id}/pdf")
+async def api_descargar_acta(acta_id: str):
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT pdf_path FROM actas_diarias WHERE acta_id=%s", (acta_id,))
+            row = cur.fetchone()
+    if not row or not Path(row["pdf_path"]).is_file():
+        raise HTTPException(status_code=404, detail="PDF de acta inexistente")
+    return FileResponse(row["pdf_path"], media_type="application/pdf", filename=Path(row["pdf_path"]).name)
+
+
+async def _registrar_intervencion(acta_id: str, body: IntervencionRequest, rol: str):
+    if rol == "JUEZ":
+        if body.identidad not in JUECES_MAP:
+            raise HTTPException(status_code=403, detail="Identidad no autorizada como juez")
+        async with httpx.AsyncClient(timeout=3.0) as client:
+            await validar_juez_de_turno(client, body.identidad, acta_id)
+    else:
+        if body.identidad != "escribano-demo" or body.identidad in JUECES_MAP:
+            raise HTTPException(status_code=403, detail="Identidad no autorizada como escribano")
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT estado,minuto_simulado FROM actas_diarias WHERE acta_id=%s", (acta_id,))
+            acta = cur.fetchone()
+            if not acta:
+                raise HTTPException(status_code=404, detail="Acta inexistente")
+            if acta["estado"] != "CERRADA":
+                raise HTTPException(status_code=409, detail="El acta debe estar cerrada antes de intervenir")
+            cur.execute("SELECT 1 FROM acta_firmas WHERE acta_id=%s AND rol=%s", (acta_id, rol))
+            if cur.fetchone():
+                return {"acta_id": acta_id, "rol": rol, "resultado": "DEMO_VERIFICADA", "idempotente": True}
+            cur.execute("""INSERT INTO acta_firmas
+                (acta_id,rol,identidad,resultado,modo,detalle_json)
+                VALUES (%s,%s,%s,'DEMO_VERIFICADA','DEMO',%s::jsonb)""",
+                (acta_id, rol, body.identidad, json.dumps({"legalmente_verificable": False, "nota": "Sin certificado digital real"})))
+            registrar_auditoria(conn, float(acta["minuto_simulado"] or 0), "ACTA_INTERVENCION_DEMO", acta_id, body.identidad, {"rol": rol, "resultado": "DEMO_VERIFICADA"})
+        conn.commit()
+    return {"acta_id": acta_id, "rol": rol, "identidad": body.identidad, "resultado": "DEMO_VERIFICADA", "modo": "DEMO", "legalmente_verificable": False}
+
+
+@app.post("/api/actas/{acta_id}/firmas/judicial")
+async def api_firma_judicial(acta_id: str, body: IntervencionRequest):
+    return await _registrar_intervencion(acta_id, body, "JUEZ")
+
+
+@app.post("/api/actas/{acta_id}/intervencion/escribano")
+async def api_intervencion_escribano(acta_id: str, body: IntervencionRequest):
+    return await _registrar_intervencion(acta_id, body, "ESCRIBANO")
+
+
+@app.get("/api/actas/{acta_id}/integridad")
+async def api_integridad_acta(acta_id: str):
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT datos_hash_sha256,pdf_path,pdf_sha256,snapshot_json FROM actas_diarias WHERE acta_id=%s", (acta_id,))
+            row = cur.fetchone()
+    if not row:
+        raise HTTPException(status_code=404, detail="Acta inexistente")
+    pdf_ok = Path(row["pdf_path"]).is_file() and hashlib.sha256(Path(row["pdf_path"]).read_bytes()).hexdigest() == row["pdf_sha256"]
+    datos_ok = sha256_canonico(row["snapshot_json"]) == row["datos_hash_sha256"]
+    return {"acta_id": acta_id, "integra": pdf_ok and datos_ok, "datos_integro": datos_ok, "pdf_integro": pdf_ok}

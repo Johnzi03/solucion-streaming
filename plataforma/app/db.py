@@ -21,6 +21,9 @@ def inicializar_db(limpiar_datos: bool = False) -> None:
     with get_conn() as conn:
         conn.execute(sql)
         if limpiar_datos:
+            # El reinicio de una jornada es una operación explícita del operador.
+            # Nunca se ejecuta automáticamente al arrancar FastAPI: actas y auditorías
+            # deben sobrevivir a un reinicio del proceso.
             conn.execute("TRUNCATE TABLE ordenes_proveedor, expedientes, reclamos, auditoria_hash_chain RESTART IDENTITY CASCADE;")
         conn.commit()
 
